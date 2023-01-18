@@ -1,0 +1,8 @@
+CREATE PROCEDURE getOrderDetailsBetweenDates(@startDate DATE, @endDate DATE)
+AS
+BEGIN
+  select OrderID,c.ContactName, OrderDate,ShipName,ShipAddress,ShipCity,ShipCountry 
+  from orders o join Customers c on
+  o.CustomerID=c.CustomerID 
+  WHERE OrderDate BETWEEN @startDate AND @endDate;
+END;
